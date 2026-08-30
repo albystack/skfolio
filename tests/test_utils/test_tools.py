@@ -4,6 +4,7 @@ from collections.abc import Iterator
 from types import SimpleNamespace
 
 import numpy as np
+import pandas as pd
 import pytest
 
 from skfolio.utils.tools import (
@@ -132,7 +133,7 @@ class TestInputToArray:
 
         assert result.shape == (3, 2)
         np.testing.assert_array_equal(result[:2], [["A", "B"], ["group", "style"]])
-        assert np.isnan(result[2, 0])
+        assert pd.isna(result[2, 0])
         assert result[2, 1] == "risk"
 
 
